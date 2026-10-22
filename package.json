@@ -1,0 +1,13 @@
+{
+  "name": "weather-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium current-weather dashboard with a server-side WeatherAPI proxy",
+  "scripts": {
+    "dev": "vercel dev",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

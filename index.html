@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d0e">
+  <meta name="description" content="A thoughtful, real-time weather dashboard with a developer-friendly API inspector.">
+  <title>Weather — Same sky. A brighter day.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/mood.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Weather dashboard home">
+        <span class="brand-mark" aria-hidden="true">☼</span>
+        <span><strong>weather</strong><small>SAME SKY. A BRIGHTER DAY.</small></span>
+      </a>
+      <p class="top-note">Real-time weather<br>for a better you <span>—</span></p>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">YOUR DAY, IN CONTEXT</p>
+      <h1 id="hero-title">Check the weather.<br><span>Plan a better day.</span></h1>
+      <form id="search-form" class="searchbar" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
+        <label class="sr-only" for="city-input">Enter a city</label>
+        <input id="city-input" name="city" placeholder="Enter a city (e.g. New Delhi)" autocomplete="off" maxlength="100" required>
+        <button id="search-button" class="search-submit" type="submit" aria-label="Search weather"><span aria-hidden="true">→</span></button>
+      </form>
+      <div class="city-chips" id="city-chips" aria-label="Popular cities"></div>
+      <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="weather-panel" class="weather-panel" aria-label="Current weather" aria-live="polite">
+      <div class="empty-state">
+        <div class="empty-sun" aria-hidden="true">☼</div>
+        <h2>Find your forecast</h2>
+        <p>Search a city to see the weather, the mood, and the data behind it.</p>
+      </div>
+    </section>
+
+    <section id="metrics" class="metrics-grid" aria-label="Weather details"></section>
+
+    <section class="inspector" aria-labelledby="inspector-title">
+      <div class="inspector-head">
+        <div><p class="eyebrow">UNDER THE HOOD</p><h2 id="inspector-title">API Response</h2><p class="muted">Inspect the exact response returned by the weather endpoint.</p></div>
+        <div class="inspector-actions">
+          <div class="tabs" role="tablist" aria-label="JSON display format">
+            <button class="tab" id="raw-tab" role="tab" aria-selected="false" aria-controls="json-output" data-mode="raw">Raw JSON</button>
+            <button class="tab active" id="formatted-tab" role="tab" aria-selected="true" aria-controls="json-output" data-mode="formatted">Formatted JSON</button>
+          </div>
+          <button class="copy-button" id="copy-json" type="button" disabled><span aria-hidden="true">▢</span> Copy JSON</button>
+        </div>
+      </div>
+      <div class="code-window">
+        <div class="code-toolbar"><span class="traffic"><i></i><i></i><i></i></span><span id="json-label">weather-response.json</span><span class="code-language">JSON</span></div>
+        <pre id="json-output" class="json-output" tabindex="0" aria-label="API response JSON"><code>Search for a city to inspect its API response.</code></pre>
+      </div>
+      <p class="inspector-foot">API credentials are kept on the server and are never included in this response.</p>
+    </section>
+    <footer><span>WEATHER / CURRENT CONDITIONS</span><span>Made for clearer days <span aria-hidden="true">✳</span></span></footer>
+  </main>
+</body>
+</html>
